@@ -1,0 +1,90 @@
+/* Home.css */
+
+/* Body Styling */
+body {
+  font-family: sans-serif; /* Default font */
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.home-hero {
+  min-height: 60vh;
+  background-color: #f7f9fc; /* Light background color */
+  padding: 100px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Hero Section Heading */
+.home-hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2d3436; /* Darker shade for better contrast */
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+
+/* Hero Section Subheading */
+.home-hero p {
+  font-size: 1.25rem;
+  color: #636e72; /* Lighter grey for subheading */
+  margin-bottom: 30px;
+}
+
+/* Hero Section Button */
+.home-hero .btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #2ecc71; /* Green background */
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  color: white;
+}
+
+.home-hero .btn:hover {
+  background-color: #27ae60; /* Darken the button on hover */
+  transform: scale(1.05);
+}
+
+/* Card Section */
+.home-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.home-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Content Styling */
+.card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #2d3436;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .home-hero h1 {
+    font-size: 2.2rem;
+  }
+  .home-hero p {
+    font-size: 1.1rem;
+  }
+  .home-hero .btn {
+    padding: 10px 25px;
+  }
+}
