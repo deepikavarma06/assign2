@@ -24,7 +24,7 @@ function AddStudent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/students', formData)
+    axios.post('https://assignment-2-backend-vmlo.onrender.com/students', formData)
       .then(() => {
         navigate('/students'); // Redirect without showing toast
       })
