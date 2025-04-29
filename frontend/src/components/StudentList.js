@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './StudentList.css';
 
 function StudentList() {
   const [students, setStudents] = useState([]);
-  const [selectedStudentId, setSelectedStudentId] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,80 +12,81 @@ function StudentList() {
       .catch(err => console.error(err));
   }, []);
 
-  const handleEdit = () => {
-    if (selectedStudentId) {
-      navigate(`/edit/${selectedStudentId}`);
-    } else {
-      alert('Please select a student to edit.');
-    }
+  const handleEdit = (id) => {
+    navigate(`/edit/${id}`);
   };
 
-  const handleDelete = () => {
-    if (selectedStudentId) {
-      if (window.confirm('Are you sure you want to delete this student?')) {
-        axios.delete(`http://localhost:5000/students/${selectedStudentId}`)
-          .then(() => {
-            setStudents(students.filter(student => student._id !== selectedStudentId));
-            setSelectedStudentId('');
-            alert('Student Deleted Successfully!');
-          })
-          .catch(err => console.error(err));
-      }
-    } else {
-      alert('Please select a student to delete.');
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this student?')) {
+      axios.delete(`http://localhost:5000/students/${id}`)
+        .then(() => {
+          setStudents(students.filter(student => student._id !== id));
+          alert('Student Deleted Successfully!');
+        })
+        .catch(err => console.error(err));
     }
-  };
-
-  const handleSelectStudent = (id) => {
-    setSelectedStudentId(id);
   };
 
   return (
-    <div className="student-list-wrapper">
-      <h2 className="heading">Students List</h2>
-      <div className="table-container">
-        <table className="student-table">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>ID</th>
-              <th>First</th>
-              <th>Last</th>
-              <th>Email</th>
-              <th>DOB</th>
-              <th>Department</th>
-              <th>Year</th>
-              <th>Active</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map(student => (
-              <tr key={student._id} className={selectedStudentId === student._id ? 'selected-row' : ''}>
-                <td>
-                  <input
-                    type="radio"
-                    name="selectedStudent"
-                    value={student._id}
-                    onChange={() => handleSelectStudent(student._id)}
-                    checked={selectedStudentId === student._id}
-                  />
-                </td>
-                <td>{student.studentId}</td>
-                <td>{student.firstName}</td>
-                <td>{student.lastName}</td>
-                <td>{student.email}</td>
-                <td>{new Date(student.dob).toLocaleDateString()}</td>
-                <td>{student.department}</td>
-                <td>{student.enrollmentYear}</td>
-                <td>{student.isActive ? "Yes" : "No"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="action-buttons">
-        <button className="edit-btn" onClick={handleEdit}>Edit</button>
-        <button className="delete-btn" onClick={handleDelete}>Delete</button>
+    <div style={{ padding: '2rem', backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Students</h2>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '1.5rem',
+        justifyContent: 'center'
+      }}>
+        {students.map(student => (
+          <div key={student._id} style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            padding: '1.5rem',
+            width: '300px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <h5 style={{ textTransform: 'capitalize' }}>{student.firstName} {student.lastName}</h5>
+              <p><strong>ID:</strong> {student.studentId}</p>
+              <p><strong>Email:</strong> {student.email}</p>
+              <p><strong>DOB:</strong> {new Date(student.dob).toLocaleDateString()}</p>
+              <p><strong>Department:</strong> {student.department}</p>
+              <p><strong>Year:</strong> {student.enrollmentYear}</p>
+              <p><strong>Status:</strong> {student.isActive ? 'Active' : 'Inactive'}</p>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <button
+                onClick={() => handleEdit(student._id)}
+                style={{
+                  backgroundColor: '#ffc107',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold'
+                }}
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(student._id)}
+                style={{
+                  backgroundColor: '#dc3545',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold'
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
