@@ -1,77 +1,26 @@
-.home-hero {
+.home-hero-light {
   min-height: 60vh;
-  background: linear-gradient(135deg, rgba(0, 0, 50, 1), rgba(0, 0, 50, 0.8)); /* Dark blue gradient */
-  background-size: cover;
-  background-position: center;
+  background-color: #f8f9fa; /* Light background */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f8f9fa; /* Light color for text */
   text-align: center;
-  position: relative;
+  padding: 2rem;
 }
 
-.home-hero h1 {
-  font-size: 3rem;
-  text-transform: uppercase;
+.home-hero-light h1 {
+  font-size: 2.5rem;
   font-weight: bold;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Text shadow for readability */
-  margin-bottom: 20px;
+  color: #333;
 }
 
-.home-hero p {
-  font-size: 1.25rem;
-  font-weight: 300;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+.home-hero-light p {
+  font-size: 1.2rem;
+  color: #555;
 }
 
-.home-hero .btn {
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: #ff5733; /* Vibrant orange-red */
-  border: none;
-  border-radius: 30px;
-  transition: background-color 0.3s, transform 0.3s ease-in-out;
-}
-
-.home-hero .btn:hover {
-  background-color: #c0392b; /* Darker red on hover */
-  transform: scale(1.1);
-}
-
-/* Hover effect only for cards on Home */
-.home-card {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.home-card:hover {
+/* Optional: Button Hover Styling */
+.btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Card buttons hover */
-.card .btn:hover {
-  transform: scale(1.05);
-  transition: 0.3s ease-in-out;
-  background-color: #ff5733; /* Vibrant orange-red for card buttons */
-}
-
-/* Navbar links hover (Optional) */
-.navbar-nav .nav-link:hover {
-  color: #f39c12; /* Gold color for navbar links on hover */
-}
-
-/* No hover on tables, no hover on form fields */
-
-/* Make the cards more responsive */
-@media (max-width: 768px) {
-  .home-hero h1 {
-    font-size: 2rem;
-  }
-
-  .home-hero p {
-    font-size: 1rem;
-  }
+  transition: all 0.3s ease-in-out;
 }
