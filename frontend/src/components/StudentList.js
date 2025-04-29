@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './StudentList.css';
 
 function StudentList() {
   const [students, setStudents] = useState([]);
@@ -37,57 +38,56 @@ function StudentList() {
     }
   };
 
-  
   const handleSelectStudent = (id) => {
     setSelectedStudentId(id);
   };
 
   return (
-    <div>
-      <h2 className="mb-4">Students List</h2>
-      <table className="table table-striped table-bordered table-hover">
-        <thead className="table-dark">
-          <tr>
-            <th>Select</th>
-            <th>Student ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>DOB</th>
-            <th>Department</th>
-            <th>Enrollment Year</th>
-            <th>Active</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map(student => (
-            <tr key={student._id}>
-              <td>
-                <input
-                  type="radio"
-                  name="selectedStudent"
-                  value={student._id}
-                  onChange={() => handleSelectStudent(student._id)}
-                  checked={selectedStudentId === student._id}
-                />
-              </td>
-              <td>{student.studentId}</td>
-              <td>{student.firstName}</td>
-              <td>{student.lastName}</td>
-              <td>{student.email}</td>
-              <td>{new Date(student.dob).toLocaleDateString()}</td>
-              <td>{student.department}</td>
-              <td>{student.enrollmentYear}</td>
-              <td>{student.isActive ? "Yes" : "No"}</td>
+    <div className="student-list-wrapper">
+      <h2 className="heading">Students List</h2>
+      <div className="table-container">
+        <table className="student-table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>ID</th>
+              <th>First</th>
+              <th>Last</th>
+              <th>Email</th>
+              <th>DOB</th>
+              <th>Department</th>
+              <th>Year</th>
+              <th>Active</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Outside Buttons */}
-      <div className="d-flex justify-content-center gap-3 mt-4">
-        <button className="btn btn-warning" onClick={handleEdit}>Edit Selected Student</button>
-        <button className="btn btn-danger" onClick={handleDelete}>Delete Selected Student</button>
+          </thead>
+          <tbody>
+            {students.map(student => (
+              <tr key={student._id} className={selectedStudentId === student._id ? 'selected-row' : ''}>
+                <td>
+                  <input
+                    type="radio"
+                    name="selectedStudent"
+                    value={student._id}
+                    onChange={() => handleSelectStudent(student._id)}
+                    checked={selectedStudentId === student._id}
+                  />
+                </td>
+                <td>{student.studentId}</td>
+                <td>{student.firstName}</td>
+                <td>{student.lastName}</td>
+                <td>{student.email}</td>
+                <td>{new Date(student.dob).toLocaleDateString()}</td>
+                <td>{student.department}</td>
+                <td>{student.enrollmentYear}</td>
+                <td>{student.isActive ? "Yes" : "No"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="action-buttons">
+        <button className="edit-btn" onClick={handleEdit}>Edit</button>
+        <button className="delete-btn" onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
