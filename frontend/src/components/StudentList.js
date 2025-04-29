@@ -7,7 +7,7 @@ function StudentList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/students')
+    axios.get('https://assignment-2-backend-vmlo.onrender.com/students')
       .then(res => setStudents(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -18,7 +18,7 @@ function StudentList() {
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this student?')) {
-      axios.delete(`http://localhost:5000/students/${id}`)
+      axios.delete(`https://assignment-2-backend-vmlo.onrender.com/students/${id}`)
         .then(() => {
           setStudents(students.filter(student => student._id !== id));
           alert('Student Deleted Successfully!');
