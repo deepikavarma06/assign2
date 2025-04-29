@@ -8,7 +8,7 @@ const ViewStudents = () => {
     // Correctly set the URL for fetching students
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/students');
+        const response = await axios.get('https://assignment-2-backend-vmlo.onrender.com/api/students');
         setStudents(response.data);  // Set the data from backend to state
       } catch (error) {
         console.error('Error fetching students:', error);  // Log the error
