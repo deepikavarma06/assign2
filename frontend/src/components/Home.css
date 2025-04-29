@@ -1,90 +1,77 @@
-/* Home.css */
-
-/* Body Styling */
-body {
-  font-family: sans-serif; /* Default font */
-  margin: 0;
-  padding: 0;
-}
-
-/* Hero Section */
 .home-hero {
   min-height: 60vh;
-  background-color: #f7f9fc; /* Light background color */
-  padding: 100px 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 50, 1), rgba(0, 0, 50, 0.8)); /* Dark blue gradient */
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #f8f9fa; /* Light color for text */
   text-align: center;
   position: relative;
 }
 
-/* Hero Section Heading */
 .home-hero h1 {
   font-size: 3rem;
+  text-transform: uppercase;
   font-weight: bold;
-  color: #2d3436; /* Darker shade for better contrast */
-  margin-bottom: 20px;
   letter-spacing: 3px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Text shadow for readability */
+  margin-bottom: 20px;
 }
 
-/* Hero Section Subheading */
 .home-hero p {
   font-size: 1.25rem;
-  color: #636e72; /* Lighter grey for subheading */
-  margin-bottom: 30px;
+  font-weight: 300;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Hero Section Button */
 .home-hero .btn {
-  padding: 12px 30px;
+  padding: 12px 25px;
   font-size: 1.1rem;
   font-weight: bold;
-  background-color: #2ecc71; /* Green background */
+  background-color: #ff5733; /* Vibrant orange-red */
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   transition: background-color 0.3s, transform 0.3s ease-in-out;
-  color: white;
 }
 
 .home-hero .btn:hover {
-  background-color: #27ae60; /* Darken the button on hover */
-  transform: scale(1.05);
+  background-color: #c0392b; /* Darker red on hover */
+  transform: scale(1.1);
 }
 
-/* Card Section */
+/* Hover effect only for cards on Home */
 .home-card {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
 .home-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Card Content Styling */
-.card-title {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: #2d3436;
+/* Card buttons hover */
+.card .btn:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
+  background-color: #ff5733; /* Vibrant orange-red for card buttons */
 }
 
-.card-text {
-  font-size: 1rem;
-  color: #7f8c8d;
+/* Navbar links hover (Optional) */
+.navbar-nav .nav-link:hover {
+  color: #f39c12; /* Gold color for navbar links on hover */
 }
 
-/* Media Query for Smaller Screens */
+/* No hover on tables, no hover on form fields */
+
+/* Make the cards more responsive */
 @media (max-width: 768px) {
   .home-hero h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
+
   .home-hero p {
-    font-size: 1.1rem;
-  }
-  .home-hero .btn {
-    padding: 10px 25px;
+    font-size: 1rem;
   }
 }
