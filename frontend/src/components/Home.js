@@ -1,36 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // Keep using your hover effect styles
+import './Home.css';
 
 function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="home-hero d-flex align-items-center justify-content-center text-light">
+      <section className="home-hero-light d-flex align-items-center justify-content-center text-dark">
         <div className="container text-center">
-          <h1 className="display-3 fw-bold mb-4 text-uppercase">
-            Student Management System
+          <h1 className="display-4 fw-bold mb-3 text-uppercase">
+            Student Management
           </h1>
           <p className="lead mb-4">
-          Effortlessly organize, update, and track student progress.
-
+            Effortlessly track and view your students.
           </p>
         </div>
       </section>
 
-      {/* Buttons Section */}
-      <section className="py-5 bg-light text-center">
+      {/* Button Section */}
+      <section className="py-5 bg-white text-center">
         <div className="container">
-          <h2 className="mb-5 fw-bold">What You Can Do</h2>
-          
-          {/* View Students Button */}
-          <Link to="/students" className="btn btn-primary btn-lg mb-4 px-5 py-3" style={{ fontSize: '1.2rem', borderRadius: '25px' }}>
+          <Link
+            to="/students"
+            className="btn btn-primary btn-lg px-5 py-3"
+            style={{ fontSize: '1.2rem', borderRadius: '25px' }}
+          >
             View Students
-          </Link>
-          
-          {/* Add Students Button */}
-          <Link to="/add" className="btn btn-success btn-lg mb-4 px-5 py-3" style={{ fontSize: '1.2rem', borderRadius: '25px' }}>
-            Add Students
           </Link>
         </div>
       </section>
