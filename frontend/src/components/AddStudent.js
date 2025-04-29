@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import './AddStudent.css'; 
+import './AddStudent.css';
 
 function AddStudent() {
   const [formData, setFormData] = useState({
@@ -25,14 +24,14 @@ function AddStudent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/students', formData)
+    axios.post('https://assignment-2-backend-vmlo.onrender.com/students', formData)
       .then(() => {
-        toast.success('🎉 Student Added Successfully!'); // ✨ show toast
-        navigate('/students'); // ✨ redirect after showing toast
+        alert('Student Added Successfully!');
+        navigate('/students');
       })
       .catch(err => {
         console.error(err);
-        toast.error('❌ Error Adding Student!');
+        alert('Error Adding Student!');
       });
   };
 
